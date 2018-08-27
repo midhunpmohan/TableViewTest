@@ -10,7 +10,7 @@ import UIKit
 
 class TableViewController: UITableViewController {
     
-    var numbersArray: [Int] = [1,2,3,4,5,6,7,8,9,10]
+    var numbersArray: NSMutableArray = [1,2,3,4,5,6,7,8,9,10]
     
     override func viewDidLoad() {
         navigationItem.rightBarButtonItem = editButtonItem
@@ -41,7 +41,7 @@ class TableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            numbersArray.remove(at: indexPath.row)
+            numbersArray.remove(indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             self.perform(#selector(reloadTable), with: nil, afterDelay: 1)
         } else if editingStyle == .insert {
